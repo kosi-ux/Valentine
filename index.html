@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #ffcccc;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #d63384;
+        }
+
+        .heart {
+            font-size: 50px;
+            animation: heartbeat 1.5s infinite;
+            display: block;
+            margin: 20px auto;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .yes-btn {
+            background: #ff69b4;
+            color: white;
+        }
+
+        .yes-btn:hover {
+            background: #d63384;
+        }
+
+        .no-btn {
+            background: #ccc;
+            color: black;
+        }
+
+        .no-btn:hover {
+            background: #999;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Will You Be My Valentine? ❤️</h1>
+        <p>I've been thinking about this for a while, and i decided to ask.</p>
+        <span class="heart">💖</span>
+
+        <button class="btn yes-btn" onclick="sayYes()">Yes!</button>
+        <button class="btn no-btn" onclick="sayNo()">Let me think...</button>
+
+        <p id="response" class="hidden"></p>
+    </div>
+
+    <script>
+        function sayYes() {
+            document.getElementById("response").innerHTML = "Yay! Can't wait! 💕🎉";
+            document.getElementById("response").classList.remove("hidden");
+            confettiEffect();
+        }
+
+        function sayNo() {
+            document.getElementById("response").innerHTML = "Oh no! Take your time, but I hope you say yes soon! 😢";
+            document.getElementById("response").classList.remove("hidden");
+        }
+
+        function confettiEffect() {
+            const confettiCount = 100;
+            for (let i = 0; i < confettiCount; i++) {
+                let confetti = document.createElement("div");
+                confetti.innerHTML = "🎉";
+                confetti.style.position = "absolute";
+                confetti.style.left = Math.random() * window.innerWidth + "px";
+                confetti.style.top = Math.random() * window.innerHeight + "px";
+                confetti.style.fontSize = Math.random() * 30 + "px";
+                document.body.appendChild(confetti);
+                setTimeout(() => confetti.remove(), 2000);
+            }
+        }
+    </script>
+
+</body>
+</html>
